@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.svg';
-import mainImg from '../assets/main_before.png';
+import mainImg from '../assets/main_after.png';
 import Header from '../components/Header';
 import BottomNav from '../components/Nav';
 
@@ -75,7 +75,6 @@ const ModalContainer = styled.div`
   gap: 24px;
 `;
 
-
 const ModalTitle = styled.h2`
   font-size: 22px;
   font-weight: 700;
@@ -137,7 +136,6 @@ const MainPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // 페이지 로드 후 1초 뒤에 모달 표시
     const timer = setTimeout(() => {
       setShowModal(true);
     }, 1000);
@@ -164,23 +162,6 @@ const MainPage = () => {
       </BackgroundImageContainer>
 
       <BottomNav />
-
-      {showModal && (
-        <ModalOverlay onClick={handleLaterClick}>
-          <ModalContainer onClick={(e) => e.stopPropagation()}>
-            
-            <ModalTitle>오늘의 질문이 왔어요!</ModalTitle>
-            <ModalButtonContainer>
-              <AnswerButton onClick={handleAnswerClick}>
-                답변하기
-              </AnswerButton>
-              <LaterButton onClick={handleLaterClick}>
-                나중에 하기
-              </LaterButton>
-            </ModalButtonContainer>
-          </ModalContainer>
-        </ModalOverlay>
-      )}
     </MobileContainer>
   );
 };
