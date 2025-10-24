@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import logo from '../assets/logo.svg';
 import mainImg from '../assets/main_before.png';
 import Header from '../components/Header';
-import BottomNav from '../components/nav';
+import BottomNav from '../components/Nav';
 
 const MobileContainer = styled.div`
   width: 100%;
