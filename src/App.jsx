@@ -1,22 +1,23 @@
 import React from 'react';
-import styled from 'styled-components';
-import LoginPage from '../src/pages/LoginPage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import LoginPage from './pages/LoginPage';
+import ChoicePage from './pages/ChoicePage'; 
+import CreateFamily from './pages/CreateFamily';
+import FamilyCreatedPage from './pages/FamilyCreated'; 
 
 const App = () => {
   return (
-    <AppContainer>
-      <LoginPage />
-    </AppContainer>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/choice" element={<ChoicePage />} />
+        <Route path="/create-family" element={<CreateFamily />} />
+        <Route path="/family-created" element={<FamilyCreatedPage />} /> 
+        <Route path="/join-family" element={<div>가족 참여하기 페이지</div>} />
+      </Routes>
+    </BrowserRouter>
   );
 };
-
-const AppContainer = styled.div`
-  width: 100%;
-  min-height: 100vh;
-  background-color: #53504C;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 export default App;
