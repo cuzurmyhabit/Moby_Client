@@ -1,12 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import LoginPage from '../src/pages/LoginPage';
+import AgePage from './pages/AgePage';
 
 const App = () => {
   return (
     <AppContainer>
-      <LoginPage />
+      {/* <LoginPage /> */}
+      <AgePage />
     </AppContainer>
+
+
   );
 };
 
