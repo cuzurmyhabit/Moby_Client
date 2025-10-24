@@ -122,14 +122,6 @@ const NextButton = styled.button`
   }
 `;
 
-const HomeIndicator = styled.div`
-  width: 134px;
-  height: 5px;
-  background-color: #000;
-  border-radius: 100px;
-  margin: 0 auto;
-`;
-
 const CreateFamily = () => {
   const [memberCount, setMemberCount] = useState(2);
   const navigate = useNavigate();
@@ -172,7 +164,6 @@ const CreateFamily = () => {
         <NextButton onClick={handleNext}>
           다음
         </NextButton>
-        <HomeIndicator />
       </BottomSection>
     </MobileContainer>
   );

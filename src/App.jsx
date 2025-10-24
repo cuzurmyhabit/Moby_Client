@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import ChoicePage from './pages/ChoicePage'; 
 import CreateFamily from './pages/CreateFamily';
 import FamilyCreatedPage from './pages/FamilyCreated'; 
+import Mainpage from "../src/pages/MainPage";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/create-family" element={<CreateFamily />} />
         <Route path="/family-created" element={<FamilyCreatedPage />} /> 
         <Route path="/join-family" element={<div>가족 참여하기 페이지</div>} />
+        <Route path="/main" element={<Mainpage />} />
       </Routes>
     </BrowserRouter>
   );

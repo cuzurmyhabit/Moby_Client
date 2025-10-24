@@ -167,13 +167,6 @@ const ToastMessage = styled.div`
   visibility: ${props => (props.$show ? 'visible' : 'hidden')};
 `;
 
-const HomeIndicator = styled.div`
-  width: 134px;
-  height: 5px;
-  background-color: #000;
-  border-radius: 100px;
-  margin: 0 auto 8px auto;
-`;
 
 const CopyIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -238,8 +231,6 @@ const CreatedFamily = () => {
           </StartButton>
         </CodeCard>
       </MainContent>
-
-      <HomeIndicator />
 
       <ToastMessage $show={showToast}>
         코드가 클립보드에 복사되었습니다.

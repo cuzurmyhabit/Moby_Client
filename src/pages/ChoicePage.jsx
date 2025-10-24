@@ -79,15 +79,6 @@ const StyledLinkButton = styled(Link)`
     background-color: #FFDE7D;
   }
 `;
-
-const HomeIndicator = styled.div`
-  width: 134px;
-  height: 5px;
-  background-color: #000;
-  border-radius: 100px;
-  margin: 0 auto 8px auto;
-`;
-
 const ChoicePage = () => {
   return (
     <MobileContainer>
@@ -111,7 +102,6 @@ const ChoicePage = () => {
         </ButtonWrapper>
       </MainContent>
 
-      <HomeIndicator />
     </MobileContainer>
   );
 };
