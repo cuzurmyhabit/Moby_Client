@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import logo from '../assets/logo.svg';
+import { useNavigate } from 'react-router-dom';
 
 
 // ----------------------------------------------------
@@ -12,9 +13,9 @@ const MAIN_COLOR = '#ffcc00'; // Moby 로고 및 버튼 색상
 const BACKGROUND_COLOR = '#ffffff'; // 이미지에 맞게 흰색 배경으로 변경
 
 const AgeContainer = styled.div`
-    width: 100%;
-    max-width: 390px;
-    height: 100vh;
+   width: 100%;
+  max-width: 390px;
+  height: 100vh;
   max-height: 844px;
   background-color: #ffffff;
   position: relative;
@@ -125,11 +126,12 @@ const DateInput = styled.input`
 `;
 
 const NextButton = styled.button`
-    width: 90%;
+    width: 361px;
+    height: 44px;
     margin: 0 auto 20px;
     margin-bottom:74px;
     padding: 15px 0;
-    background-color: ${MAIN_COLOR};
+    background-color: #FFDE7D;
     color: #fff;
     border: none;
     border-radius: 12px;
@@ -168,6 +170,7 @@ const AgePage = () => {
         month: 'MM',
         day: 'DD'
     });
+    const navigate = useNavigate();
 
     const monthRef = useRef(null);
     const dayRef = useRef(null);
@@ -189,11 +192,10 @@ const AgePage = () => {
     const handleNext = () => {
         const { year, month, day } = date;
         if (year.length === 4 && month.length === 2 && day.length === 2) {
-            alert(`입력된 생년월일: ${year}년 ${month}월 ${day}일`);
-        } else {
-            alert('생년월일을 올바르게 입력해주세요.');
+            navigate('/name'); 
         }
     };
+    
 
     const isButtonEnabled = date.year.length === 4 && date.month.length === 2 && date.day.length === 2;
 
@@ -202,7 +204,6 @@ const AgePage = () => {
             {/* iOS 상태 표시줄 (데모용) */}
 
             <Header>
-                <BackArrow>←</BackArrow>
                 <LogoImage src={logo} alt="Moby 로고" />
             </Header>
             

@@ -58,9 +58,9 @@ const Nav = () => {
   const location = useLocation();
 
   const navItems = [
-    { path: '/main', icon: homeIcon, label: '홈' },
-    { path: '/letter', icon: letterIcon, label: '편지' },
-    { path: '/question', icon: questionIcon, label: '질문' },
+    { path: '/main-after', icon: homeIcon, label: '홈' },
+    { path: '/writeLetter', icon: letterIcon, label: '편지' },
+    { path: '/list', icon: questionIcon, label: '질문' },
     { path: '/shop', icon: shopIcon, label: '상점' },
     { path: '/my', icon: myIcon, label: 'my' },
   ];
