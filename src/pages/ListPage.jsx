@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import list_logo from '../assets/list_logo.svg'; 
 import list_statusBar from '../assets/list_statusBar.svg';
+import Nav from '../components/Nav';
 
 // ===== Styled Components =====
 const MobileContainer = styled.div`
@@ -141,7 +142,7 @@ const ListPage = () => {
           <RecordItem key={record.id} question={record.question} date={record.date} />
         ))}
       </ContentArea>
-
+        <Nav/>
     </MobileContainer>
   );
 };

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom'; // 👈 useNavigate import 추가
 import list_into_1 from '../assets/list_into_1.svg';
 import list_statusBar from '../assets/list_statusBar.svg';
+import Nav from '../components/Nav';
 
 const MobileContainer = styled.div`
   width: 100%;
@@ -79,6 +80,7 @@ const ListIntoPage_1 = () => {
       <BackButton onClick={handleBack}>
         &lt; 
       </BackButton>
+      <Nav/>
     </MobileContainer>
   );
 };

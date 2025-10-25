@@ -5,6 +5,7 @@ import logo from '../assets/logo.svg';
 import mainImg from '../assets/main_after.png';
 import Header from '../components/Header';
 import BottomNav from '../components/Nav';
+import bottle from '../assets/main_after_bottle.png';
 
 const MobileContainer = styled.div`
   width: 100%;
@@ -25,7 +26,7 @@ const MobileContainer = styled.div`
 `;
 
 const TopSpacer = styled.div`
-  height: 66px;
+  height: 30px;
   width: 100%;
 `;
 
@@ -50,84 +51,19 @@ const ContentOverlay = styled.div`
   gap: 20px;
 `;
 
-// 모달 스타일
-const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-`;
-
-const ModalContainer = styled.div`
-  background-color: #ffffff;
-  border-radius: 20px;
-  padding: 40px 30px;
-  width: 85%;
-  max-width: 320px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-`;
-
-const ModalTitle = styled.h2`
-  font-size: 22px;
-  font-weight: 700;
-  color: #222222;
-  margin: 0;
-  text-align: center;
-`;
-
-const ModalDescription = styled.p`
-  font-size: 15px;
-  color: #666666;
-  text-align: center;
-  line-height: 1.5;
-  margin: 0;
-`;
-
-const ModalButtonContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-`;
-
-const AnswerButton = styled.button`
-  width: 100%;
-  padding: 16px 0;
-  background-color: #FFDE7D;
-  border-radius: 12px;
-  border: none;
-  font-size: 17px;
-  font-weight: 600;
-  color: #5A4E3A;
-  cursor: pointer;
-  transition: background-color 0.2s;
+/* ✅ bottle 이미지 클릭 가능하게 변경 */
+const BottleImage = styled.img`
+  position: absolute;
+  left: 50px;
+  top: 200px;
+  width: 150px;
+  height: auto;
+  z-index: 10;
+  cursor: pointer; /* ✅ 클릭 가능한 커서로 변경 */
+  transition: transform 0.2s ease;
 
   &:hover {
-    background-color: #FFD54F;
-  }
-`;
-
-const LaterButton = styled.button`
-  width: 100%;
-  padding: 16px 0;
-  background-color: transparent;
-  border: none;
-  font-size: 15px;
-  font-weight: 500;
-  color: #999999;
-  cursor: pointer;
-  transition: color 0.2s;
-
-  &:hover {
-    color: #666666;
+    transform: scale(1.05); /* ✅ 살짝 확대 효과 */
   }
 `;
 
@@ -139,7 +75,6 @@ const MainPage = () => {
     const timer = setTimeout(() => {
       setShowModal(true);
     }, 1000);
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -149,17 +84,23 @@ const MainPage = () => {
   };
 
   const handleLaterClick = () => {
-    setShowModal(false);
+    navigate('/writeLetter');
+  };
+
+  /* ✅ 병 클릭 시 letterInto로 이동 */
+  const handleBottleClick = () => {
+    navigate('/letterInto');
   };
 
   return (
     <MobileContainer>
       <TopSpacer />
-      
       <BackgroundImageContainer>
-        <ContentOverlay>
-        </ContentOverlay>
+        <ContentOverlay></ContentOverlay>
       </BackgroundImageContainer>
+
+      {/* ✅ 클릭 이벤트 추가 */}
+      <BottleImage src={bottle} alt="병 이미지" onClick={handleBottleClick} />
 
       <BottomNav />
     </MobileContainer>

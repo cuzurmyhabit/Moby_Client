@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // 👈 axios import 추가
 import bottleImage from '../assets/writeLetter_bottle.svg'; 
+import Nav from '../components/Nav';
 
 // ===== Styled Components (이전과 동일) =====
 
@@ -11,7 +12,7 @@ const MobileContainer = styled.div`
   max-width: 390px;
   height: 100vh;
   max-height: 844px;
-  background-color: #fcf6e8; 
+  background-color: #FFEEBC; 
   position: relative;
   display: flex;
   flex-direction: column;
@@ -141,17 +142,16 @@ const MessageTextarea = styled.textarea`
 const SendButton = styled.button`
   width: 100%;
   height: 56px;
+  font-family: inherit;
   background-color: #ffffff;
   color: #000000;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   border: none;
   border-radius: 12px;
   cursor: pointer;
   margin-top: 20px;
   transition: background-color 0.2s, opacity 0.2s;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
   &:hover {
     background-color: #f0f0f0;
   }
@@ -160,7 +160,7 @@ const SendButton = styled.button`
     opacity: 0.9;
   }
 `;
-
+``
 // ===== WriteLetterPage 컴포넌트 =====
 const WriteLetterPage = () => {
   const navigate = useNavigate();
@@ -174,38 +174,9 @@ const WriteLetterPage = () => {
 
   // 👈 기존 handleSubmit 로직 통합 및 수정
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!content.trim()) {
-      alert("내용을 입력하세요!");
-      return;
+  // 성공 후 "/" 경로로 이동
+      navigate('/main-after'); 
     }
-    
-    // 받는 사람 선택 검증 (선택적)
-    if (!selectedRecipient) {
-        alert("보낼 사람을 선택하세요!");
-        return;
-    }
-
-    try {
-      // API 호출
-      const res = await axios.post("http://localhost:3000/letter/addLetter", {
-        content: content,
-        // 필요하다면 받는 사람 정보도 추가:
-        // recipient: selectedRecipient, 
-      });
-
-      console.log("✅ 서버 응답:", res.data);
-
-      // 성공 후 "/" 경로로 이동
-      navigate('/'); 
-
-    } catch (err) {
-      console.error("❌ 오류:", err.response?.data || err.message);
-      setError(err.response?.data || "서버 오류");
-      alert(`편지 전송 실패: ${err.response?.data?.message || err.message}`);
-    }
-  };
 
   const handleRecipientSelect = (recipient) => {
     setSelectedRecipient(recipient);
@@ -270,7 +241,7 @@ const WriteLetterPage = () => {
 
       {/* 92px 높이의 네비게이션 바가 들어올 공간 */}
       <div style={{ height: '92px', width: '100%' }} /> 
-
+ <Nav />
     </MobileContainer>
   );
 };

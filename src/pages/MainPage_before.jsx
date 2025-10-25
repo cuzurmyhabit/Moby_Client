@@ -25,7 +25,7 @@ const MobileContainer = styled.div`
 `;
 
 const TopSpacer = styled.div`
-  height: 66px;
+  height: 30px;
   width: 100%;
 `;
 
@@ -150,7 +150,7 @@ const MainPage = () => {
   };
 
   const handleLaterClick = () => {
-    setShowModal(false);
+    setShowModal('/writeLetter');
   };
 
   return (

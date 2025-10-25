@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import Nav from '../components/Nav';
 
@@ -9,7 +9,6 @@ import QuestionPng from '../assets/question.png';
 
 // --- Styled Components ---
 
-// --- Page Layout ---
 const MobileContainer = styled.div`
   width: 100%;
   max-width: 390px;
@@ -39,7 +38,6 @@ const MainContent = styled.main`
   align-items: center;
 `;
 
-// --- Question Section (as PNG) ---
 const QuestionImage = styled.img`
   width: 100%;
   max-width: 250px;
@@ -47,7 +45,6 @@ const QuestionImage = styled.img`
   margin-bottom: 24px;
 `;
 
-// --- Answer Form ---
 const AnswerForm = styled.form`
   width: 100%;
   display: flex;
@@ -57,7 +54,7 @@ const AnswerForm = styled.form`
 
 const AnswerTextarea = styled.textarea`
   width: 100%;
-  height: 180px; 
+  height: 180px;
   border-radius: 12px;
   padding: 16px;
   font-family: 'IM혜민체', sans-serif;
@@ -95,95 +92,23 @@ const SubmitButton = styled.button`
   }
 `;
 
-// --- SVG Icon Components ---
-const IconImage = styled.img`
-  width: 24px;
-  height: 24px;
-  filter: ${props => props.$active ? 'none' : 'grayscale(100%) opacity(0.5)'};
-`;
-
-// 아이콘 컴포넌트들을 img 태그로 변경
-const HomeIcon = ({ $active }) => (
-  <IconImage src={HomeIconSvg} alt="홈" $active={$active} />
-);
-
-const MailIcon = ({ $active }) => (
-  <IconImage src={MailIconSvg} alt="편지" $active={$active} />
-);
-
-const BookIcon = ({ $active }) => (
-  <IconImage src={BookIconSvg} alt="질문" $active={$active} />
-);
-
-const StoreIcon = ({ $active }) => (
-  <IconImage src={StoreIconSvg} alt="상점" $active={$active} />
-);
-
-const MyIcon = ({ $active }) => (
-  <IconImage src={MyIconSvg} alt="my" $active={$active} />
-);
-
-const NavContainer = styled.nav`
-  width: 100%;
-  height: 80px;
-  background-color: #ffffff;
-  border-top: 1px solid #F0F0F0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 0 10px;
-  padding-bottom: 20px; 
-  box-sizing: border-box;
-`;
-
-const NavBar = () => {
-  const location = useLocation();
-  const activePath = location.pathname;
-
-  return (
-    <NavContainer>
-      <NavItem to="/main" $active={activePath === '/main'}>
-        <HomeIcon $active={activePath === '/main'} />
-        홈
-      </NavItem>
-      <NavItem to="/letters" $active={activePath === '/letters'}>
-        <MailIcon $active={activePath === '/letters'} />
-        편지
-      </NavItem>
-      <NavItem to="/question" $active={activePath === '/question'}>
-        <BookIcon $active={activePath === '/question'} />
-        질문
-      </NavItem>
-      <NavItem to="/store" $active={activePath === '/store'}>
-        <StoreIcon $active={activePath === '/store'} />
-        상점
-      </NavItem>
-      <NavItem to="/my" $active={activePath === '/my'}>
-        <MyIcon $active={activePath === '/my'} />
-        my
-      </NavItem>
-    </NavContainer>
-  );
-};
-
-
 const QuestionPage = () => {
-  const [answer, setAnswer] = useState("");
+  const [answer, setAnswer] = useState('');
+  const navigate = useNavigate(); // ✅ 페이지 이동용 훅
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (answer.trim() === "") return;
-    console.log("제출된 답변:", answer);
+    if (answer.trim() === '') return;
+
+    console.log('제출된 답변:', answer);
+    navigate('/question-into'); // ✅ 완료 후 이동
   };
 
   return (
     <MobileContainer>
       <Header showBackButton />
       <MainContent>
-        <QuestionImage 
-          src={QuestionPng} 
-          alt="오늘의 질문" 
-        />
+        <QuestionImage src={QuestionPng} alt="오늘의 질문" />
 
         <AnswerForm onSubmit={handleSubmit}>
           <AnswerTextarea

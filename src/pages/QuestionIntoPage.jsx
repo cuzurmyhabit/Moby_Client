@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom'; // 👈 useNavigate import 추가
 import question_into from '../assets/question_into.svg';
+import Nav from '../components/Nav';
+
 
 const MobileContainer = styled.div`
   width: 100%;
@@ -66,16 +68,17 @@ const QuestionIntoPage = () => {
   const navigate = useNavigate(); // 👈 useNavigate 훅 사용
 
   const handleBack = () => {
-    navigate('/list'); // 👈 /list 경로로 이동
+    navigate('/chat'); // 👈 /list 경로로 이동
   };
 
   return (
     <MobileContainer>     
       <NavContainer>
-                <ConversationButton>
+                <ConversationButton onClick={handleBack}>
                     가족이랑 대화하러 가기 
                 </ConversationButton>
             </NavContainer> 
+            <Nav />
     </MobileContainer>
   );
 };
