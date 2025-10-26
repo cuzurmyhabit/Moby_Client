@@ -83,7 +83,6 @@ const ChoicePage = () => {
   return (
     <MobileContainer>
       <Header />
-
       <MainContent>
         <TextWrapper>
           <Title>가족과 함께 진심 나누기</Title>
